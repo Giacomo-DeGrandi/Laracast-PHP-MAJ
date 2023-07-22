@@ -1,18 +1,7 @@
 <?php
 
-$business = [
+$heading = "Home";
 
-  'name' => 'DigiDev',
-  'cost' => 15,
-  'categories' => ['Development', 'Business', 'Design']
-];
-
-
-function register($user){
-
-  
-};
-
-require 'index.view.php';
+require 'views/index.view.php';
 
 ?>
