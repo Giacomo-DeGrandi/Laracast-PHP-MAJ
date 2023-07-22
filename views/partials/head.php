@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title><?= $heading ?></title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
