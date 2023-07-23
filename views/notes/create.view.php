@@ -17,7 +17,7 @@
                                 <?php $_POST['body'] ?? '' ?>
                             </textarea>
                         </div>
-                        <?php if(!empty($errors['body'])): ?>
+                        <?php if (!empty($errors['body'])) : ?>
                             <p class="mt-3 text-sm leading-6 text-red-600"> <?= $errors['body'] ?></p>
                         <?php endif; ?>
                     </div>
