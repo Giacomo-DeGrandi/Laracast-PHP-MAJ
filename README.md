@@ -1,5 +1,5 @@
 
-***MAJ in PHP ***
+***MAJ in PHP***
 july 2023
 
 # Laracast-PHP
