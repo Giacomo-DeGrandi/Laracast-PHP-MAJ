@@ -1,8 +1,11 @@
+
+***MAJ in PHP ***
+july 2023
+
 # Laracast-PHP
-laracast lessons notes and tests
+**Laracast** lectures notes and tests.
 
-
-***Exemple Portfolio for MAJ in PHP ***
+Building an exemple of *portfolio* with notes to follow the lectures on Laracast and prepare to learn Laravel
 
 
 
