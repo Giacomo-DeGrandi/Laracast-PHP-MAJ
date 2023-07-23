@@ -15,7 +15,7 @@ function isUrl($url)
 
 
 
-function abort($code = Response::NOT_FOUND )
+function abort($code = Response::NOT_FOUND)
 {   // Error handling, defaulted to 404, title set to ref CODE, die
     http_response_code($code);
     $heading = "{$code}";
@@ -23,3 +23,26 @@ function abort($code = Response::NOT_FOUND )
     die();
 }
 
+
+function authorize($condition, $status = Response::FORBIDDEN)
+{
+    if (!$condition) {
+        abort($status);
+    }
+}
+
+
+function base_path($path)
+{
+    return BASE_PATH . $path;
+}
+
+
+function view($path, $attr)
+{
+    // we extract the $attribute array on variables with the key 
+    // as name and the value as value
+    extract($attr);
+
+    require base_path('views/'.$path);
+}
