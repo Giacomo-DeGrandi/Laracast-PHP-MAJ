@@ -9,7 +9,6 @@
         <div class="px-3 py-1 text-xl">
             - <?= $note['body'] ?> <br>
         </div>
-        <i class="text-sm font-small text-indigo-500"> by <?= $note['user_Id'] ?></i>
     </div>
 
 </main>
