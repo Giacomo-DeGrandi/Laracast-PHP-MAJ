@@ -6,7 +6,7 @@ $config = require('config.php');
 $db = new Database($config['database']);
 
 
-$id = 1;
+$id = 2;
 
 $query = 'select * from notes where user_Id = :id ;';
 
