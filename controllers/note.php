@@ -20,7 +20,7 @@ $currentUser = 2;
  
 if ( $note['user_Id'] !==  $currentUser ) {
     // forbidden
-    abort(403);
+    abort(Response::FORBIDDEN);
 }
 
 $heading = "Note";
