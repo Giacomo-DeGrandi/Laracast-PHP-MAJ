@@ -6,6 +6,9 @@ class Database
 
     public $connection;
 
+    public $statement;
+
+
     public function __construct($config)
     {
 
@@ -34,12 +37,31 @@ class Database
 
     public function query($query, $params = [])
     {
-        $statement = $this->connection->prepare($query);
+        $this->statement = $this->connection->prepare($query);
 
-        $statement->execute($params);
+        $this->statement->execute($params);
 
-        return $statement;
+        return $this;
     }
+
+
+    // Get possession of PDOStatement fetch() for further use
+    public function find(){
+
+        return $this->statement->fetch();
+
+    }
+
+    // Get possession of PDOStatement fetchAll() for further use
+    public function get()
+    {
+
+        return $this->statement->fetchAll();
+    }
+
+
+
+
 }
 
 

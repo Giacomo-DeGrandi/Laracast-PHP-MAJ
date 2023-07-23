@@ -8,7 +8,9 @@ $db = new Database($config['database']);
 
 $query = 'select * from notes where id = :id ;';
 
-$note = $db->query($query, [':id' => $_GET['id'] ])->fetch();
+
+
+$note = $db->query($query, [':id' => $_GET['id'] ])->find();
 
 
 if( ! $note ){

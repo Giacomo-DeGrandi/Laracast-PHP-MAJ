@@ -10,7 +10,8 @@ $id = 2;
 
 $query = 'select * from notes where user_Id = :id ;';
 
-$notes = $db->query($query, [':id' => $id ])->fetchAll();
+$notes = $db->query($query, [':id' => $id ])->get();
+
 
 
 $heading = "Notes";
