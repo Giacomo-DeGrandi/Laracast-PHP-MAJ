@@ -13,7 +13,9 @@ function isUrl($url)
     return $_SERVER['REQUEST_URI'] === $url;
 }
 
-function abort($code = 404)
+
+
+function abort($code = Response::NOT_FOUND )
 {   // Error handling, defaulted to 404, title set to ref CODE, die
     http_response_code($code);
     $heading = "{$code}";
