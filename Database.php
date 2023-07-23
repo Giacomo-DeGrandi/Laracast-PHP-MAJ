@@ -6,19 +6,15 @@ class Database
 
     public $connection;
 
-    public function __construct()
+    public function __construct($config)
     {
 
-        $config = [
-            'host' => 'localhost',
-            'port' => '3306',
-            'dbname' => 'posts',
-            'user' => 'root',
-            'charset' => 'utf8mb4'
-        ];
+
+        //dd(http_build_query($config, '', ';'));
+
 
         // Connect to the MySQL database.
-        $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']};user={$config['user']};charset={$config['charset']}";
+        $dsn = "mysql:".http_build_query($config, '',';');
         
         
     /* PDO Methods 
