@@ -15,20 +15,20 @@
             <?php foreach ($notes as $note => $values) : ?>
                 <li>
                     <div class=" flex-start md:flex">
-            <div class="mb-10 ml-6 block max-w-md rounded-lg bg-neutral-50 p-6 shadow-md shadow-black/5 ">
-                <p class="mb-6 text-neutral-700">
-                    <?= $values['body'] ?>
-                </p>
-                <a href="/note?id=<?= $values['id'] ?>" class="text-neutral-700 font-sm">
-                    Read
-                </a>
-            </div>
+                        <div class="mb-10 ml-6 block max-w-md rounded-lg bg-neutral-50 p-6 shadow-md shadow-black/5 ">
+                            <p class="mb-6 text-neutral-700">
+                                <?= $values['body'] ?>
+                            </p>
+                            <a href="/note?id=<?= $values['id'] ?>" class="text-neutral-700 text-xs">
+                                Read
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <br>
+            <?php endforeach; ?>
+        </ul>
     </div>
-    </li>
-    <br>
-<?php endforeach; ?>
-</ul>
-</div>
 
 
 

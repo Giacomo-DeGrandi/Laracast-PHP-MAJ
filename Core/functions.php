@@ -19,16 +19,19 @@ function abort($code = Response::NOT_FOUND)
 {   // Error handling, defaulted to 404, title set to ref CODE, die
     http_response_code($code);
     $heading = "{$code}";
-    require "views/{$code}.php";
+    require base_path("views/{$code}.php");
     die();
 }
 
 
 function authorize($condition, $status = Response::FORBIDDEN)
 {
+
     if (!$condition) {
         abort($status);
     }
+    // return true if valid
+    return true;
 }
 
 
