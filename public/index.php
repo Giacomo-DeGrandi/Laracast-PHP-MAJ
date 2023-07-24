@@ -18,8 +18,6 @@ spl_autoload_register(function ($class) {
 $router = new \Core\Router();
 
 
-
-
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $method = $_POST['__method'] ?? $_SERVER['REQUEST_METHOD'];
