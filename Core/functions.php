@@ -1,5 +1,8 @@
 <?php
 
+
+Use Core\Response;
+
 // classic dump n die
 function dd($data)
 {   // format the dump

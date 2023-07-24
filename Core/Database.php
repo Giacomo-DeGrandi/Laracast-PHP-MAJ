@@ -1,5 +1,10 @@
 <?php
 
+// declare Core namespace
+namespace Core;
+
+use PDO;
+
 
 class Database
 {
