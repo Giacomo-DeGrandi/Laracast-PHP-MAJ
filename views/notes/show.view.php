@@ -25,7 +25,8 @@
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
             <form method="POST">
-                <button type="hidden" name="id" value="<?= $note['id'] ?>  ?>"></button>
+                <input type="hidden" name="__method" value="DELETE"></button>
+                <input type="hidden" name="id" value="<?= $note['id'] ?>  ?>"></button>
                 <button type="submit" class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500"> Delete </button>
             </form>
         </div>
