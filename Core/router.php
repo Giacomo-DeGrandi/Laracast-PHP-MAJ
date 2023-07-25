@@ -73,19 +73,6 @@ class Router
         ];
     }
 
-    public function route($uri, $method)
-    {
-        foreach($this->routes as $route){
-            if($route['uri'] === $uri AND $route['method'] === strtoupper($method)){
-                return require base_path($route['controller']);
-            }
-        }
-
-        $this->abort(404);
-
-    }
-
-
     public function abort($code = Response::NOT_FOUND)
     {   // Error handling, defaulted to 404, title set to ref CODE, die
         http_response_code($code);
@@ -94,6 +81,21 @@ class Router
         die();
     }
 
+
+    public function route($uri, $method)
+    {
+        dd([$uri,$method]);
+        
+        foreach($this->routes as $route){
+            if($route['uri'] === $uri AND $route['method'] === strtoupper($method)){
+            
+                return require base_path($route['controller']);
+            }
+        }
+
+        $this->abort(404);
+
+    }
 
 
 }

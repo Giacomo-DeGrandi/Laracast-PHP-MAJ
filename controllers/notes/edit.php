@@ -12,7 +12,7 @@ $db = App::resolve(Database::class);
 $errors = [];
 
 // pull the POST request from url 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'PATCH') {
 
 
     if (Validator::string($_POST['body'], 3, 1000)) {
@@ -20,8 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $query = 'INSERT INTO notes(body, user_Id) VALUES(:body, :user_id)';
-        $db->query($query, [':body' => htmlspecialchars($_POST['body']), ':user_id' => 2]);
+
+        $query = 'UPDATE notes SET body=:body WHERE id=:id";';
+        $db->query($query, [':body' => htmlspecialchars($_POST['body']), ':id' => $_POST['id']]);
     }
 
 

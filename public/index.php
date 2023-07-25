@@ -15,14 +15,19 @@ spl_autoload_register(function ($class) {
 });
 
 
+// BOOTSTRAP THIS DAMN THING
+
+require base_path('bootstrap.php');
+
+
 $router = new \Core\Router();
+
+$routes = require base_path('routes.php');
 
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $method = $_POST['__method'] ?? $_SERVER['REQUEST_METHOD'];
 
-
-$routes = require base_path('routes.php');
 
 $router->route($uri, $method);
