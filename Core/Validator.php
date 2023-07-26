@@ -5,12 +5,12 @@ namespace Core;
 class Validator
 {
 
-    public static function string($value, $min, $max = 1000)
+    public static function string($value, $min, $max)
     {
 
-        return strlen(trim($value)) === 0 ?? true;
+        $value =  trim($value);
 
-        return (strlen($value) >= $min && strlen($value) <= $max) ?? true;
+        return strlen($value) >= $min && strlen($value) <= $max;
     }
 
     public static function email($email){

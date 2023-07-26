@@ -2,7 +2,7 @@
 
 
 view('about.view.php', [
-    'heading'=>'About Us'
-])
+    'heading'=> 'Hello '.$_SESSION['user'] ?? 'About us'
+]);
 
-?>
+

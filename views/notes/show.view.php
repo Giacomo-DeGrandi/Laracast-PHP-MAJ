@@ -24,6 +24,9 @@
         </div>
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
+
+            <a href="/notes" class="text-sm font-semibold leading-6 text-gray-900">Cancel</a>
+
             <a href="note/edit?id=<?= $note['id'] ?>" class="rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500">Edit </a>
 
             <form method="POST">
