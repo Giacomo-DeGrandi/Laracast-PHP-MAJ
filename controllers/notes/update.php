@@ -14,7 +14,7 @@ $query = 'select * from notes where id = :id ;';
 $note = $db->query($query, [':id' => $_POST['id']])->findOrFail();
 
 // 2 is the user_Id of the notes table cf notes.php
-$currentUser = 2;
+$currentUser = 3;
 
 authorize($note['user_Id'] ===  $currentUser);
 

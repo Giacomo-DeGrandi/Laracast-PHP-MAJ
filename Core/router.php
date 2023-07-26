@@ -1,6 +1,8 @@
 <?php
 
 namespace Core;
+
+use Core\Middleware\Middleware;
 /*
 
 
@@ -24,20 +26,25 @@ class Router
     protected $routes = [];
 
 
-    public function add($method, $uri, $controller){
+    public function add($method, $uri, $controller)
+    {
+
         $this->routes[] = [
             'uri' => $uri,
             'controller' => $controller,
-            'method' => $method
+            'method' => $method,
+            'middleware' => null
         ];
+
+        // start the chain
+        return $this;
     }
 
 
     public function get($uri, $controller)
     {
-       $this->add('GET', $uri, $controller);
+        return $this->add('GET', $uri, $controller);
     }
-    
 
 
     public function post($uri, $controller)
@@ -70,26 +77,30 @@ class Router
         die();
     }
 
-    public function only(){
+    public function only($key)
+    {
 
+        $this->routes[array_key_last($this->routes)]['middleware'] = $key;
+
+        // cycle on
+        return $this;
     }
 
     public function route($uri, $method)
     {
-        
-        foreach($this->routes as $route){
-            if($route['uri'] === $uri AND $route['method'] === strtoupper($method)){
-                
+
+        foreach ($this->routes as $route) {
+            if ($route['uri'] === $uri and $route['method'] === strtoupper($method)) {
+
+                //apply middleware¨
+                Middleware::resolve($route['middleware']);
+
+
                 return require base_path($route['controller']);
             }
-        
         }
         //dd('hello');
- 
+
         $this->abort(404);
-
     }
-
-
 }
-
