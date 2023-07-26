@@ -84,8 +84,8 @@ class Router
 
     public function route($uri, $method)
     {
-        dd([$uri,$method]);
         
+        //dd([$this->routes,$uri,$method]);
         foreach($this->routes as $route){
             if($route['uri'] === $uri AND $route['method'] === strtoupper($method)){
             

@@ -24,11 +24,7 @@
         </div>
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
-            <form method="GET">
-                <input type="hidden" name="__method" value="GET"></button>
-                <input type="hidden" name="id" value="<?= $note['id'] ?>  ?>"></button>
-                <button type="submit" class="rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500"> Edit </button>
-            </form>
+            <a href="note/edit?id=<?= $note['id'] ?>" class="rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500">Edit </a>
 
             <form method="POST">
                 <input type="hidden" name="__method" value="DELETE"></button>
