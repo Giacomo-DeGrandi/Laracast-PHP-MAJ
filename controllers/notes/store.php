@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         $query = 'INSERT INTO notes(body, user_Id) VALUES(:body, :user_id)';
-        $db->query($query, [':body' => htmlspecialchars($_POST['body']), ':user_id' => 2]);
+        $db->query($query, [':body' => htmlspecialchars($_POST['body']), ':user_id' => 3  ]);
 
         header('location: \notes');
         die();

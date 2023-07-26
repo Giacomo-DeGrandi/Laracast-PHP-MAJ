@@ -1,20 +1,6 @@
 <?php
 
-/*
-
-return  [
-
-    '/' => 'controllers/index.php',
-    '/about' => 'controllers/about.php',
-    '/contact' => 'controllers/contact.php',
-    '/notes' => 'controllers/notes/index.php',
-    '/notes/create' => 'controllers/notes/create.php',
-    '/note' => 'controllers/notes/show.php'
-
-];
-*/
-
-
+//Router -> Method ( Uri , ControllerPath ) -> Auth
 
 $router->get('/', 'controllers/index.php');
 $router->get('/about', 'controllers/about.php');
@@ -30,7 +16,7 @@ $router->patch('/note', 'controllers/notes/update.php');
 $router->get('/notes/create', 'controllers/notes/create.php');
 $router->post('/notes', 'controllers/notes/store.php');
 
-$router->get('/register', 'controllers/registration/create.php');
+$router->get('/register', 'controllers/registration/create.php')->only('guest');
 $router->post('/register', 'controllers/registration/store.php');
 
 //$router->get('/login', 'controllers/login/sigin.php');
