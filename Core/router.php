@@ -24,53 +24,42 @@ class Router
     protected $routes = [];
 
 
-    public function get($uri, $controller)
-    {
-
+    public function add($method, $uri, $controller){
         $this->routes[] = [
             'uri' => $uri,
             'controller' => $controller,
-            'method' => 'GET'
+            'method' => $method
         ];
     }
 
 
+    public function get($uri, $controller)
+    {
+       $this->add('GET', $uri, $controller);
+    }
+    
+
+
     public function post($uri, $controller)
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => 'POST'
-        ];
+        return $this->add('POST', $uri, $controller);
     }
 
 
     public function delete($uri, $controller)
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => 'DELETE'
-        ];
+        return $this->add('DELETE', $uri, $controller);
     }
 
 
     public function patch($uri, $controller)
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => 'PATCH'
-        ];
+        return $this->add('PATCH', $uri, $controller);
     }
 
     public function put($uri, $controller)
     {
-        $this->routes[] = [
-            'uri' => $uri,
-            'controller' => $controller,
-            'method' => 'PUT'
-        ];
+        return $this->add('PUT', $uri, $controller);
     }
 
     public function abort($code = Response::NOT_FOUND)
@@ -81,18 +70,22 @@ class Router
         die();
     }
 
+    public function only(){
+
+    }
 
     public function route($uri, $method)
     {
         
-        //dd([$this->routes,$uri,$method]);
         foreach($this->routes as $route){
             if($route['uri'] === $uri AND $route['method'] === strtoupper($method)){
-            
+                
                 return require base_path($route['controller']);
             }
+        
         }
-
+        //dd('hello');
+ 
         $this->abort(404);
 
     }

@@ -18,7 +18,7 @@ $currentUser = 2;
 
 authorize($note['user_Id'] ===  $currentUser);
 
-if (Validator::string($_POST['body'], 3, 1000)) {
+if (!Validator::string($_POST['body'], 3, 1000)) {
     $errors['body'] = 'The body can not be more than 1,000 characters and at least 3';
 }
 
