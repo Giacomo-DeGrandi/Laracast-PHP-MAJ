@@ -55,7 +55,7 @@ if ($user) {
     
     $query = 'INSERT INTO users(email, password) VALUES(:email, :password) ;';
 
-    $user = $db->query($query, [':email' => $_POST['email'], ':password' => $_POST['password']]);
+    $user = $db->query($query, [':email' => $_POST['email'], ':password' => password_hash($_POST['password'], PASSWORD_DEFAULT) ]);
 
     $_SESSION['user'] = [
         'email' => $_POST['email']
