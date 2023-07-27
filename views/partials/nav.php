@@ -10,8 +10,10 @@
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                         <a href="/" class=" <?= isUrl('/') ? 'bg-gray-900 text-white hover:text-white' : 'text-gray-300 hover:bg-gray-700'  ?> rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
                         <a href="/about" class=" <?= isUrl('/about') ? 'bg-gray-900 text-white hover:text-white' : 'text-gray-300 hover:bg-gray-700'  ?>  rounded-md px-3 py-2 text-sm font-medium">About</a>
-                        <a href="/contact" class="<?= isUrl('/contact') ? 'bg-gray-900 text-white  hover:text-white' : 'text-gray-300 hover:bg-gray-700'  ?> rounded-md px-3 py-2 text-sm font-medium">Contact</a>
-                        <a href="/notes" class="<?= isUrl('/notes') ? 'bg-gray-900 text-white  hover:text-white' : 'text-gray-300 hover:bg-gray-700'  ?> rounded-md px-3 py-2 text-sm font-medium">Notes</a>
+                        <a href="/contact" class="<?= isUrl('/contact') ? 'bg-gray-900 text-white hover:text-white' : 'text-gray-300 hover:bg-gray-700'  ?> rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+                        <?php if ($_SESSION['user'] ?? false) : ?>
+                            <a href="/notes" class="<?= isUrl('/notes') ? 'bg-gray-900 text-white hover:text-white' : 'text-gray-300 hover:bg-gray-700'  ?> rounded-md px-3 py-2 text-sm font-medium">Notes</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -21,12 +23,20 @@
                     <!-- Profile dropdown -->
                     <div class="relative ml-3">
                         <div>
-                            <div aria-expanded="false" aria-haspopup="true">
-                                <?php if ($_SESSION['user'] ?? true) : ?>
-                                    <a href="/register" class="<?= isUrl('/register') ? 'bg-gray-900 text-white  hover:text-white' : 'text-gray-300 hover:bg-gray-700'  ?> rounded-md px-3 py-2 text-sm font-medium">Register</a>
-                                    <a href="/login" class="<?= isUrl('/login') ? 'bg-gray-900 text-white  hover:text-white' : 'text-gray-300 hover:bg-gray-700'  ?> rounded-md px-3 py-2 text-sm font-medium">Log in</a>
+                            <div class="flex" aria-expanded="false" aria-haspopup="true">
+                                <?php if ($_SESSION['user'] ?? false) : ?>
+                                    <div class="rounded-xl bg-purple-400 px-3 py-2">
+                                        <div class="font-xl4 font-extrabold text-white"><?= strtoupper(substr(($_SESSION['user']['email'] ?? false), 0, 2)) ?></div>
+                                    </div>
+
+                                    <form method="POST" action="/sessions">
+                                        <input type="hidden" name="__method" value="DELETE">
+                                        <button class="bg-gray-900 text-white hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logout</button>
+
+                                    </form>
                                 <?php else : ?>
-                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                    <a href="/register" class="<?= isUrl('/register') ? 'bg-gray-900 text-white hover:text-white' : 'text-gray-300 hover:bg-gray-700'  ?> rounded-md px-3 py-2 text-sm font-medium">Register</a>
+                                    <a href="/login" class="<?= isUrl('/login') ? 'bg-gray-900 text-white hover:text-white' : 'text-gray-300 hover:bg-gray-700'  ?> rounded-md px-3 py-2 text-sm font-medium">Log in</a>
                                 <?php endif; ?>
                             </div>
                         </div>

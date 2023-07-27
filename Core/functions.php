@@ -57,6 +57,27 @@ function view($path, $attr)
 function login($user){
 
     $_SESSION['user'] = [
-        'email' => $user
+        'email' => $user['email']
     ];
+
+    session_regenerate_id(true);
+}
+
+function logout($user){
+
+    $_SESSION = [];
+
+    session_destroy();
+
+
+    $params = session_get_cookie_params();
+
+    setcookie('PHPSESSID', '', time() - 900, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+
+
+    header('location: /');
+
+    die();
+
+
 }
