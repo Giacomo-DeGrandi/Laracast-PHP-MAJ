@@ -1,6 +1,6 @@
 <?php
 
-//Router -> Method ( Uri , ControllerPath ) -> Auth
+//Router -> Method ( Uri , ControllerPath ) -> Middleware
 
 $router->get('/', 'controllers/index.php');
 $router->get('/about', 'controllers/about.php');
@@ -8,7 +8,7 @@ $router->get('/contact', 'controllers/contact.php');
 
 $router->get('/notes', 'controllers/notes/index.php');
 $router->get('/note', 'controllers/notes/show.php');
-$router->delete('/note', 'controllers/notes/destroy.php');
+$router->delete('/note', 'controllers/notes/destroy.php')->only('auth');
 
 $router->get('/note/edit', 'controllers/notes/edit.php');
 $router->patch('/note', 'controllers/notes/update.php');
@@ -19,5 +19,6 @@ $router->post('/notes', 'controllers/notes/store.php');
 $router->get('/register', 'controllers/registration/create.php')->only('guest');
 $router->post('/register', 'controllers/registration/store.php');
 
-//$router->get('/login', 'controllers/login/sigin.php');
+$router->get('/login', 'controllers/sessions/create.php')->only('guest');
+$router->post('/sessions', 'controllers/sessions/store.php')->only('guest');
 
